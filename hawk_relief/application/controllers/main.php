@@ -10,12 +10,11 @@ class Main extends CI_Controller
 	
 	public function index() {
 		$this->load->model('user');
-		$this->user->test();
 		$this->load->view('homepage');
         #asdfasdfasdf
 	}
 	
-	public function signup() {
-		
+	public function new_user() {
+		$this->load->view('signup_view');
 	}
 }
