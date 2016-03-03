@@ -17,7 +17,7 @@ class Main extends CI_Controller
 	//attempt to access user homepage
 	public function home()
 	{
-		$this->load->view('homepage_view');
+		$this->load->view('homepage');
 	}
 	
 	public function new_user() {
