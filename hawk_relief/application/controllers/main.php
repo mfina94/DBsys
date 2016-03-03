@@ -122,7 +122,7 @@ class Main extends CI_Controller
 			{
 				//user created, send to registration completion page to enter info
 				//load registration view
-				$this->load->view('homepage');
+				$this->load->view('registration');
 			}
 			else echo 'Error creating new user.';
 		}
@@ -144,7 +144,8 @@ class Main extends CI_Controller
 			//create session with session data
 			$this->session->set_userdata($sessiondata);
 			
-			redirect('main/home');
+			
+			$this->load->view('homepage');
 		}
 		else {
 			
@@ -164,5 +165,25 @@ class Main extends CI_Controller
 			return true;
 		}
 		else return false;
+	}
+	
+	public function complete_registration() {
+		$this->load->model('user');
+	
+		if ((!$this->user->reg_validation()))
+		{
+			$this->load->view('registration');
+			return;
+		}
+	
+		//load user model
+		$this->load->model('user');
+		//if db was updated
+		if($this->user->complete_new_user()){
+			//delete corresponding entry from temp_users table
+			$this->db->where('link',$this->session->userdata('link'));
+			$this->db->delete('temp_users');
+			$this->load->view('homepage');
+		}else echo 'Uh-Oh, we could not submit your data.';
 	}
 }

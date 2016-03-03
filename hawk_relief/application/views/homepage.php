@@ -18,7 +18,7 @@ $this->load->view('commonViews/header.php')
 	$login = array(
 			'name'        => 'login_submit',
 			'id'          => 'login_submit',
-			'value'       => 'Sign up',
+			'value'       => 'Login',
 			'maxlength'   => '100',
 			'size'        => '50',
 			'style'       => 'width:70px',

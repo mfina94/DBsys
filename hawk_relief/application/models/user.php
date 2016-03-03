@@ -23,7 +23,7 @@
 			return false;	
 		}
  	}
-
+ 	 	
  	//store sign up data temporarily
  	public function add_temp($link)
  	{
@@ -90,5 +90,54 @@
  			return true;
  		}
  		else return false;
+ 	}
+ 	
+ 	public function complete_new_user()
+ 	{
+ 		$this->db->where('link',$this->session->userdata('link'));
+ 		$query = $this->db->get('temp_users');
+ 		
+ 		if ($query)
+ 		{
+ 			//store row corresponding to link value
+ 			$row = $query->row();
+ 			//store row values in array
+ 			$userinfo = array(
+ 					'username' => $row->username,
+ 					'password' => $row->password,
+ 					'email' => $row->email);
+ 			//insert user from temp_users table into userinfo table
+ 			$user_added = $this->db->insert('user',$userinfo);
+ 		}
+
+ 		$username = $this->session->userdata("username");
+ 		//store common form data as an array to pass to userinfo table
+ 		$temp = array('firstname' => $this->input->post('firstname'),
+ 				'lastname' => $this->input->post('lastname'),
+ 				'dob' => $this->input->post('dob'),
+ 				'phone' => $this->input->post('phone'));
+ 		//insert data into db
+ 		$this->db->where('username',$username);
+ 		$query = $this->db->update('user',$temp);
+ 		
+ 		if($query){
+ 			return true;
+ 		}
+ 		else return false;
+ 	}
+ 	
+ 	public function reg_validation()
+ 	{
+ 		//load form validation functions
+ 		$this->load->library('form_validation');
+ 		$this->form_validation->set_rules('firstname','First Name','required|trim');
+ 		$this->form_validation->set_rules('lastname','Last Name','required|trim');
+ 		$this->form_validation->set_rules('dob','Date of Birth','required|trim|regex_match[/^[0-9]{4}-[0-9]{2}-[0-9]{2}/]');
+ 		$this->form_validation->set_rules('phone','Phone','required|trim|regex_match[/^[0-9]{3}-[0-9]{3}-[0-9]{4}/]');
+ 	
+ 		if($this->form_validation->run())
+ 			return true;
+ 		else return false;
+ 	
  	}
  }
