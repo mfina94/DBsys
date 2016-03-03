@@ -1,6 +1,28 @@
 <?php
  class User extends CI_Model {
-
+	
+ 	public function login()
+ 	{
+ 		//find the matching user in the database, as well as check password	
+ 		$this->db->where('Username',$this->input->post('username'));
+		$this->db->where('Password',md5($this->input->post('password')));
+		
+		//store result of datanase query
+		$query = $this->db->get('user');
+		
+		//if match was found 
+		if($query->num_rows()==1)
+		{
+			//return the matching user
+			return $query->result();
+		}
+		
+		//no match was found in DB
+		else
+		{
+			return false;	
+		}
+ 	}
 
  	//store sign up data temporarily
  	public function add_temp($link)

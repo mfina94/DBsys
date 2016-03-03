@@ -14,6 +14,12 @@ class Main extends CI_Controller
         #asdfasdfasdf
 	}
 	
+	//attempt to access user homepage
+	public function home()
+	{
+		$this->load->view('homepage_view');
+	}
+	
 	public function new_user() {
 		$this->load->view('signup_view');
 	}
@@ -121,5 +127,42 @@ class Main extends CI_Controller
 			else echo 'Error creating new user.';
 		}
 		else echo 'Invalid link.';
+	}
+	
+	public function verify_login(){
+		
+		//set form rules to ensure login fields are not empty
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username','Username','required|callback_verify_userinfo');
+		$this->form_validation->set_rules('password','Password','required');
+		
+		//if login form entries pass validation test
+		if ($this->form_validation->run()){
+			
+			//save session data in array
+			$sessiondata = array('username' => $this->input->post('username'), 'is_logged_in' => 1);
+			//create session with session data
+			$this->session->set_userdata($sessiondata);
+			
+			redirect('main/home');
+		}
+		else {
+			
+			//reload login page 
+			$this->load->view('login_view');
+		}
+	}
+	
+	//calls user function to check username and password in database
+	public function verify_userinfo()
+	{
+		//load the user model
+		$this->load->model('user');
+		//call login function of user model
+		if ($this->user->login())
+		{
+			return true;
+		}
+		else return false;
 	}
 }
