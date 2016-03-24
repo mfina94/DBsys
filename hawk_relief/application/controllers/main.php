@@ -183,7 +183,15 @@ class Main extends CI_Controller
 			//delete corresponding entry from temp_users table
 			$this->db->where('link',$this->session->userdata('link'));
 			$this->db->delete('temp_users');
-			$this->load->view('mainpage');
+			if($this->user->isGeneralUser($link)){
+				//user created, send to registration completion page to enter info
+				//load registration view	
+				$this->load->view('mainpage');
+			}
+			else{
+				$this->load->view('registration_cc');
+			}
+			
 		}else echo 'Uh-Oh, we could not submit your data.';
 	}
 }
