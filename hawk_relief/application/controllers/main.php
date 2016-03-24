@@ -145,7 +145,7 @@ class Main extends CI_Controller
 			$this->session->set_userdata($sessiondata);
 			
 			
-			$this->load->view('homepage');
+			$this->load->view('mainpage');
 		}
 		else {
 			
@@ -183,7 +183,7 @@ class Main extends CI_Controller
 			//delete corresponding entry from temp_users table
 			$this->db->where('link',$this->session->userdata('link'));
 			$this->db->delete('temp_users');
-			$this->load->view('homepage');
+			$this->load->view('mainpage');
 		}else echo 'Uh-Oh, we could not submit your data.';
 	}
 }
