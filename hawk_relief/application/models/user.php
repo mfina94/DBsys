@@ -106,7 +106,9 @@
  			$userinfo = array(
  					'username' => $row->username,
  					'password' => $row->password,
- 					'email' => $row->email);
+ 					'email' => $row->email,
+ 					'role' => $row->role
+ 			);
  			//insert user from temp_users table into userinfo table
  			$user_added = $this->db->insert('user',$userinfo);
  		}

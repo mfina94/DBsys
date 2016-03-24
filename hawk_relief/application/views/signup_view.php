@@ -41,7 +41,6 @@
 				echo form_input('email',$this->input->post('email'));
 				echo "</p>";
 				
-<<<<<<< HEAD
 				//store dropdown box options as an array
 				$role_options = array('user'=>'User',
 						'CCOP'=>'Control Center Operator',
@@ -50,8 +49,6 @@
 				//create dropdown box, default option patient
 				echo form_dropdown('role',$role_options,'user');
 				echo "</p>";
-=======
->>>>>>> branch 'master' of https://github.com/mfina94/DBsys
 				
 				echo "<p>";
 				echo form_submit('signup_submit', 'Sign Up!');
