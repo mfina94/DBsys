@@ -50,6 +50,10 @@
 				echo form_dropdown('role',$role_options,'user');
 				echo "</p>";
 				
+				echo "<p>Zipcode: ";
+				echo form_input('zipcode', $this->input->post('zipcode'));
+				echo "</p>";
+				
 				echo "<p>";
 				echo form_submit('signup_submit', 'Sign Up!');
 				echo "</p>";
