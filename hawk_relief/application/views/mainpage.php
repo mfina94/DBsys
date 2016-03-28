@@ -43,6 +43,22 @@ $this->load->view('commonViews/header.php')
 			</tr>
 		</tbody>
 	</table>
+	<?php 
+	$login = array(
+			'name'        => 'login_submit',
+			'id'          => 'login_submit',
+			'value'       => 'Login',
+			'maxlength'   => '100',
+			'size'        => '50',
+			'style'       => 'width:70px',
+			'class' => 'btn-primary',
+	);
+	echo form_open('user/profile_page');
+	echo "<p>";
+	echo form_submit($login,'profile_page','Profile page');
+	echo "</p>";
+	echo form_close();
+	?>
 	</div>
 </body>
 <?php $this->load->view('commonViews/footer.php')?>
