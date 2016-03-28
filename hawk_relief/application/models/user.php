@@ -24,6 +24,25 @@
 		}
  	}
  	 	
+ 	public function isGeneralUser($link)
+ 	{
+ 		$this->db->where('link',$link);
+ 		$query = $this->db->get('temp_users');
+ 		
+ 		if($query->num_rows() == 1)
+ 		{
+ 			$row = $query->row();
+ 			if ($row->role == 'user' || $row->role == 'admin'){
+ 				return true;
+ 			}
+ 			return false;
+ 		}
+ 		else
+ 		{
+ 			return false;
+ 		}
+ 	}
+ 	
  	//store sign up data temporarily
  	public function add_temp($link)
  	{
@@ -33,7 +52,9 @@
  				'password' => md5($this->input->post('password')),
  				'email' => $this->input->post('email'),
  				'link' => $link,
- 				'role' => $this->input->post('role'));
+ 				'role' => $this->input->post('role'),
+ 				'zipcode' => $this->input->post('zipcode')
+ 		);
  		//insert data into db
  		$query = $this->db->insert('temp_users',$temp);
  		//check if a problem was encountered trying to insert temp user data
@@ -107,7 +128,8 @@
  					'username' => $row->username,
  					'password' => $row->password,
  					'email' => $row->email,
- 					'role' => $row->role
+ 					'role' => $row->role,
+ 					'zipcode' => $row->zipcode
  			);
  			//insert user from temp_users table into userinfo table
  			$user_added = $this->db->insert('user',$userinfo);

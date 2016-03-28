@@ -12,6 +12,12 @@ body {
 			background: #000000;
 		}
 		
+		#mainpage {
+			background: #FFFFFF;
+			outline: 2px solid #000;
+			border-radius: 15px;
+		}
+		
 		img{
 			opacity: 0.5;
 			filter: alpha(opacity=50); /* For IE8 and earlier */

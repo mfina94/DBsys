@@ -181,14 +181,17 @@ class Main extends CI_Controller
 		//if db was updated
 		if($this->user->complete_new_user()){
 			//delete corresponding entry from temp_users table
-			$this->db->where('link',$this->session->userdata('link'));
-			$this->db->delete('temp_users');
+			$link = $this->session->userdata('link');
 			if($this->user->isGeneralUser($link)){
 				//user created, send to registration completion page to enter info
 				//load registration view	
+				$this->db->where('link',$this->session->userdata('link'));
+				$this->db->delete('temp_users');
 				$this->load->view('mainpage');
 			}
 			else{
+				$this->db->where('link',$this->session->userdata('link'));
+				$this->db->delete('temp_users');
 				$this->load->view('registration_cc');
 			}
 			

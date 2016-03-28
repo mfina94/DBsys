@@ -4,6 +4,8 @@ $this->load->view('commonViews/header.php')
 ?>
 <body>
 <header id="header"><h1>Welcome to Hawk Relief!</h1></header>
+
+<div id="mainpage">
 <h2>Fast and Easy Disaster Relief</h2>
 
 
@@ -41,6 +43,6 @@ $this->load->view('commonViews/header.php')
 			</tr>
 		</tbody>
 	</table>
+	</div>
 </body>
-
 <?php $this->load->view('commonViews/footer.php')?>
