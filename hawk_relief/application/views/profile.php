@@ -28,10 +28,6 @@ $this->load->view('commonViews/header.php')
 	echo $row->phone;
 	echo '</p>';
 	
-	echo '<p>Role: ';
-	echo $row->role;
-	echo '</p>';
-	
 	echo '<p>Zip Code: ';
 	echo $row->zipcode;
 	echo '</p>';

@@ -47,10 +47,10 @@ $this->load->view('commonViews/header.php')
 	$login = array(
 			'name'        => 'login_submit',
 			'id'          => 'login_submit',
-			'value'       => 'Login',
+			'value'       => 'Profile Page',
 			'maxlength'   => '100',
 			'size'        => '50',
-			'style'       => 'width:70px',
+			'style'       => 'width:100px',
 			'class' => 'btn-primary',
 	);
 	echo form_open('user/profile_page');
