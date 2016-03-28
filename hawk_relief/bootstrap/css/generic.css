@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+ 
+body {
+ background-color: #000;
+ font-family: "Roboto Condensed", sans-serif;
+ margin: 30px;
+}
+		
+		#header, #footer {
+			font-size: large;
+			padding: 0.3em;
+			background: #000000;
+		}
+		
+		img{
+			opacity: 0.5;
+			filter: alpha(opacity=50); /* For IE8 and earlier */
+		}
+		
+		#left, #right, #center{
+			outline: 2px solid #000;
+			border-radius: 15px;
+		}
+		
+		#footer {
+			clear: both;
+		}
+		
+		#footer p{
+			color: #6EBAD4;
+		}
+		
+		#center{
+			background: #fff;
+		}
+		
+		h1{
+			color: #fff;
+		}
+		
+		#left {
+			background: #BDBDBD;
+		}
+		
+		#right {
+			background: #6EBAD4;
+		}
+
+		div .error{
+			size: 8px;
+			color: red;
+		}
+
