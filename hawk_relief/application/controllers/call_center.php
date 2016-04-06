@@ -22,5 +22,10 @@ class Call_Center extends CI_Controller
 			$this->load->view('registration_cc');
 		}
 	}
+	
+	public function verify_request(){
+		$this->load->model('donations');
+	}
+	}
 
 }
