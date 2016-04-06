@@ -25,7 +25,12 @@ class Call_Center extends CI_Controller
 	
 	public function verify_request(){
 		$this->load->model('donations');
+	
 	}
+	
+	public function request_start() {
+		$this->load->view('request_submit_view');
 	}
-
 }
+	
+

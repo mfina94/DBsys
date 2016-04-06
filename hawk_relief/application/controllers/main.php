@@ -21,7 +21,7 @@ class Main extends CI_Controller
 	}
 	
 	public function new_user() {
-		$this->load->view('signup_view');
+		$this->load->view('mainpage');
 	}
 	
 	public function user_login() {

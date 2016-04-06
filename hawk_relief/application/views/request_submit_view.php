@@ -31,12 +31,13 @@ $this->load->view('commonViews/header');?>
         	
         	//store dropdown box options as an array
         	//Must change based on db items
-        	$role_options = array('user'=>'User',
-        			'CCOP'=>'Control Center Operator',
-        			'admin'=>'Admin');
+        	
+        	$item_options = array('clothes'=>'Clothing',
+        			'water'=>'Water',
+        			'food'=>'Food', 'toiletries'=>'toiletries', 'construction'=>'Construction Materials' );
         	echo "<p>Item: ";
         	//create dropdown box, default option patient
-        	echo form_dropdown('item_id',$role_options,'items');
+        	echo form_dropdown('item_id',$item_options,'items');
         	echo "<span> *</span></p>";
         	
         	/**
