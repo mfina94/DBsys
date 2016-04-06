@@ -7,7 +7,7 @@
  		$temp = array(
  				'name' => $this->input->post('name'),
  				'description' => $this->input->post('description'),
- 				'date_request' => date("m/d/Y")
+ 				'date_request' => date("Y-m-d H:i:s")
  		);
  		$query = $this->db->insert('donations', $temp);
  		return $query;	

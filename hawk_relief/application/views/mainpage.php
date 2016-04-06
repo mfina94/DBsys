@@ -64,6 +64,22 @@ $this->load->view('commonViews/header.php')
 			'class' => 'btn-primary',
 	);
 	
+	$search = array(
+			'name'        => 'request_search',
+			'id'          => 'request_search',
+			'value'       => 'Search Donations',
+			'maxlength'   => '100',
+			'size'        => '50',
+			'style'       => 'width:150px',
+			'class' => 'btn-primary',
+	);
+	
+	echo form_open('call_center/request_search');
+	echo "<p>";
+	echo form_submit($search, 'request_search', 'Search Donations');
+	echo "</p>";
+	echo form_close();
+	
 	echo form_open('call_center/request_start');
 	echo "<p>";
 	echo form_submit($request, 'request_start', 'Request a Donation!');

@@ -40,6 +40,10 @@ class Call_Center extends CI_Controller
 	public function request_start() {
 		$this->load->view('request_submit_view');
 	}
+	
+	public function request_search() {
+		$this->load->view('request_search');
+	}
 }
 	
 
