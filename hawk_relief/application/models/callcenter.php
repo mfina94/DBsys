@@ -1,6 +1,18 @@
 <?php
  class Callcenter extends CI_Model {
 	
+ 	public function submit_request(){
+ 		//find user id by username in session, add to request
+ 		//also need cc_id and item_Category_id, item categories hardcoded for now
+ 		$temp = array(
+ 				'name' => $this->input->post('name'),
+ 				'description' => $this->input->post('description'),
+ 				'date_request' => date("m/d/Y")
+ 		);
+ 		$query = $this->db->insert('donations', $temp);
+ 		return $query;	
+ 	}
+ 	
  	public function call_center_sign_up(){
  		
  		$un = $this->session->userdata('username');
