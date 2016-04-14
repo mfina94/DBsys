@@ -2,58 +2,71 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('commonViews/header.php')
 ?>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="<?= base_url();?>bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url();?>bootstrap/css/generic.css" rel="stylesheet">
+	<script src="<?= base_url();?>bootstrap/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<title>Health E-Records</title>
+	<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<!-- load jquery javascript ajax communication -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		function view_call_center(button){
+		};
+	</script>
+
+</head>
+
 <body>
-<header id="header"><h1>Welcome to Hawk Relief!</h1></header>
-
-<div id="mainpage">
-<h2>Fast and Easy Disaster Relief</h2>
-
-
-<table class="table table-hover">	
-      <thead class="fixedHeader">
-			<tr>
-				<th>
-					#
-				</th>
-				<th>
-					Location
-				</th>
-				<th>
-					Current Status/Event
-				</th>
-				<th>
-					Number of Donations
-				</th>
-			</tr>
-			</thead>
-	   <tbody style="display: block;overflow: auto;height: 100px;width: 400px;">
-			<tr>
-				<td>
-					001
-				</td>
-				<td>
-					Denver
-				</td>
-				<td>
-					Flood
-				</td>
-				<td>
-					20
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<?php 
-	$login = array(
-			'name'        => 'login_submit',
-			'id'          => 'login_submit',
-			'value'       => 'Profile Page',
-			'maxlength'   => '100',
-			'size'        => '50',
-			'style'       => 'width:100px',
-			'class' => 'btn-primary',
-	);
+	<header id="header"><h1>Hawk Relief: Find a Call Center to volunteer at</h1></header>
+	<div id="container">
+		<div class="col-lg-10", id="center">
+		
+			<?php 
+			
+			$login = array(
+					'name'        => 'login_submit',
+					'id'          => 'login_submit',
+					'value'       => 'Profile Page',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:100px',
+					'class' => 'btn-primary',
+			);
+			
+			$loadC = array(
+					'name'        => 'load_center',
+					'id'          => 'load_center',
+					'value'       => 'View Center',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:100px',
+					'class' => 'btn-primary',
+			);
+			
+				echo validation_errors();
+				
+				$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
+					'table_close' => '</table>');
+				$this->table->set_template($table_config);
+				$this->table->set_heading('id', 'City', 'State');
+				
+				$this->db->from('call_center');
+				$query = $this->db->get();
+				
+				foreach ($query->result() as $row) 
+				{
+					echo form_open('call_center/load_call_center');
+					$this->table->add_row($row->cc_id, $row->city, $row->state,form_submit($loadC,'load_center','View Center'));
+					echo form_close();
+				}
+				
+				echo $this->table->generate();
 	
+	//Buttons to get to profile and donation page
 	$request = array(
 			'name'        => 'request_start',
 			'id'          => 'request_start',
@@ -92,6 +105,7 @@ $this->load->view('commonViews/header.php')
 	echo "</p>";
 	echo form_close();
 	?>
+		</div>
 	</div>
 </body>
 <?php $this->load->view('commonViews/footer.php')?>
