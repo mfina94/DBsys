@@ -10,8 +10,23 @@ class Main extends CI_Controller
 	
 	public function index() {
 		$this->load->model('user');
+		
+		//redirect to mainpage if logged in
+		if ($this->user->is_logged_in())
+		{
+			$this->load->view('mainpage');
+		}
+		else
+		{
+			$this->load->view('homepage');
+		}
+	}
+	
+	//user clicks a logout button
+	public function logout()
+	{
+		$this->session->sess_destroy();
 		$this->load->view('homepage');
-        #asdfasdfasdf
 	}
 	
 	//attempt to access user homepage

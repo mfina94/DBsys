@@ -151,6 +151,16 @@
  		else return false;
  	}
  	
+ 	public function is_logged_in(){
+ 		
+ 		$un = $this->session->userdata('username');
+ 		$this->db->from('user');
+ 		$this->db->where('username', $un);
+ 		$query = $this->db->get();
+ 		
+ 		return $query;
+ 	}
+ 	
  	public function reg_validation()
  	{
  		//load form validation functions

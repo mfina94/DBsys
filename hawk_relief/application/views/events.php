@@ -2,11 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('commonViews/header.php')
 ?>
-<body></body>
+<body>
 <header id="header"><h1>Hawk Relief: Events</h1></header>
  
-<div class="">
-
+<div id="container">
+	<div class="row">
+		<div class="col-lg-10", id="center">
 	<br>
         	<p>Please fill in the necessary info for your request:</p>
         	<p><span class="error">* required field.</span></p>
@@ -66,7 +67,9 @@ $this->load->view('commonViews/header.php')
 	
 	echo form_close();
 	?>
-	
+	</br>
+		</div>
+	</div>
 </div>
 </body>
 <?php $this->load->view('commonViews/footer.php')?>

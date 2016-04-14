@@ -12,6 +12,13 @@ body {
 			background: #000000;
 		}
 		
+		#banner {
+			border: solid;
+			border-width: 2px;
+			border-color: yellow;
+			border-radius: 8px;
+		}
+		
 		#mainpage {
 			background: #FFFFFF;
 			outline: 2px solid #000;
