@@ -153,12 +153,13 @@
  	
  	public function is_logged_in(){
  		
- 		$un = $this->session->userdata('username');
- 		$this->db->from('user');
- 		$this->db->where('username', $un);
- 		$query = $this->db->get();
- 		
- 		return $query;
+ 		if ($this->session->userdata('is_logged_in') == 1)
+ 		{
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
  	}
  	
  	public function reg_validation()

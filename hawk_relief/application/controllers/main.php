@@ -26,6 +26,10 @@ class Main extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
+		//save session data in array
+		$sessiondata = array('username' => '', 'is_logged_in' => 0);
+		//create session with session data
+		$this->session->set_userdata($sessiondata);
 		$this->load->view('homepage');
 	}
 	
