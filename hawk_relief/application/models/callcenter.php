@@ -57,6 +57,22 @@
  		
  	}
  	
+ 	public function event_submit(){
+ 		$temp = array('type' => $this->input->post('type'),
+ 					//'cc_id'=> ''
+ 					'street_address' => $this->input->post('street_address'),
+ 					'city' => $this->input->post('city'),
+ 					'state' => $this->input->post('state'),
+ 					'zip_code' => $this->input->post('zip_code'),
+ 					'country' => $this->input->post('country'),
+ 					'start_date' => $this->input->post('start_date'),
+ 					'end_date' => $this->input->post('end_date')
+ 		);
+ 		
+ 		$query = $this->db->insert('disasters', $temp);
+ 		return $query;
+ 	}
+ 	
  	public function call_center_sign_up(){
  		
  		$un = $this->session->userdata('username');

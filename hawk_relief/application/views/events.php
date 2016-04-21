@@ -65,6 +65,20 @@ $this->load->view('commonViews/header.php')
 	echo " Please use format YYYY-MM-DD";
 	echo "</p>";
 	
+	$event = array(
+			'name'        => 'event_submit',
+			'id'          => 'event_submit',
+			'value'       => 'Event Submit',
+			'maxlength'   => '100',
+			'size'        => '50',
+			'style'       => 'width:100px',
+			'class' => 'btn-primary',
+	);
+	
+	echo "<p>";
+	echo form_submit($event,'event_page','Event Submit');
+	echo "</p>";
+	
 	echo form_close();
 	?>
 	</br>
