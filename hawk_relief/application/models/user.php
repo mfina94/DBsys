@@ -151,6 +151,17 @@
  		else return false;
  	}
  	
+ 	public function is_logged_in(){
+ 		
+ 		if ($this->session->userdata('is_logged_in') == 1)
+ 		{
+ 			return true;
+ 		}
+ 		else{
+ 			return false;
+ 		}
+ 	}
+ 	
  	public function reg_validation()
  	{
  		//load form validation functions

@@ -32,20 +32,21 @@ $this->load->view('commonViews/header');?>
         	//store dropdown box options as an array
         	//Must change based on db items
         	
-        	$item_options = array('clothes'=>'Clothing',
-        			'water'=>'Water',
-        			'food'=>'Food', 'toiletries'=>'toiletries', 'construction'=>'Construction Materials' );
-        	echo "<p>Item: ";
-        	//create dropdown box, default option patient
-        	echo form_dropdown('item_id',$item_options,'items');
-        	echo "<span> *</span></p>";
+        	$query = $this->db->get('category');
+			$search = array(''=>'Select Cateogry');
+			foreach ($query->result() as $row){
+				$search[$row->category_id]= $row->name;
+			}
+					
+			echo "<p>Category: ";
+			
+			echo form_dropdown('category', $search,'','id="cat"');
+			echo "</p>";
         	
-        	/**
-        	 * If we end up wanting the quantity of the item
-        	 */
-        	//echo "<p> Quantity of Item: ";
-        	//echo form_input('quantity',$this->input->post('quantity'));
-        	//echo "<span> *</span></p>";
+			
+			echo "<p>Quantity: ";
+			echo form_input('quantity',$this->input->post('quantity'));
+			echo "</p>";
         	
         	echo "<p> Request Description: <span> *</span></p>";
         	echo form_textarea('description',$this->input->post('description'));
