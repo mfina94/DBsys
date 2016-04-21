@@ -9,7 +9,7 @@ class Admin extends CI_Controller
 	}
 	
 	public function a_page(){
-		$this->load->view('');
+		$this->load->view('a_page');
 	}
 	
 }

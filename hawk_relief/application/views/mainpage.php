@@ -106,13 +106,14 @@ $this->load->view('commonViews/header.php')
 	);
 	
 	$un = $this->session->userdata('username');
-	$this->db->where('username', $un);
-	$query = $this->db->get('user');
+ 		
+ 	$this->db->where('username',$un);
+ 	$query = $this->db->get('user');
 	
-	if($query){
+	if($query->num_rows() == 1){
 		$row = $query->row();
-		$role = $row->role;
-		if($row == 'admin')
+		
+		if($row->role == 'admin')
 		{
 			echo form_open('admin/a_page');
 			echo "<p>";
