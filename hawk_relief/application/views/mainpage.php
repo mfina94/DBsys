@@ -95,6 +95,33 @@ $this->load->view('commonViews/header.php')
 			'class' => 'btn-primary',
 	);
 	
+	$admin = array(
+			'name'        => 'admin_submit',
+			'id'          => 'admin_submit',
+			'value'       => 'Admin',
+			'maxlength'   => '100',
+			'size'        => '50',
+			'style'       => 'width:150px',
+			'class' => 'btn-primary',
+	);
+	
+	$un = $this->session->userdata('username');
+	$this->db->where('username', $un);
+	$query = $this->db->get('user');
+	
+	if($query){
+		$row = $query->row();
+		$role = $row->role;
+		if($row == 'admin')
+		{
+			echo form_open('admin/a_page');
+			echo "<p>";
+			echo form_submit($admin, 'admin_submit', 'Admin');
+			echo "</p>";
+			echo form_close();
+		}
+	}
+	
 	echo form_open('call_center/request_search');
 	echo "<p>";
 	echo form_submit($search, 'request_search', 'Search Donations');
