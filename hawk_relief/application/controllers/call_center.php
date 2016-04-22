@@ -48,6 +48,28 @@ class Call_Center extends CI_Controller
 	public function request_search() {
 		$this->load->view('request_search');
 	}
+	
+	public function disaster_search(){
+		$type = $this->input->post('type');
+		
+		$this->load->model('callcenter');
+		$query = $this->callcenter->centers_by_disaster_type($type);
+		if ($query){
+		
+			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
+					'table_close' => '</table>');
+			$this->table->set_template($table_config);
+		$this->table->set_heading('id', 'City', 'State');
+		
+			foreach ($query->result() as $row)
+			{
+				$this->table->add_row($row->cc_id,$row->city,$row->state);
+			}
+			echo $this->table->generate();
+			}
+		else echo "<p>No match found for that type of disaster</p>";
+		
+	}
 
 	//ajax function for search page
 	public function category_search(){

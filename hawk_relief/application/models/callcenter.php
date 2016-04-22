@@ -44,6 +44,19 @@
  		return $query;
  	}
  	
+ 	public function centers_by_disaster_type($type){
+ 		$this->db->from('disasters');
+ 		$this->db->where('type', $type);
+ 		$query = $this->db->get();
+ 		foreach ($query->result() as $row)
+ 		{
+ 			$this->db->from('callcenter');
+ 			$this->db->where('cc_id', $row->cc_id);
+ 			$query2 = $this->db->get();
+ 		}
+ 		return $query2;
+ 	}
+ 	
  	public function items_by_category($category){
  		//get category id from cat table
  		$this->db->from('category');
