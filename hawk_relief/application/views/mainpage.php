@@ -37,16 +37,6 @@ $this->load->view('commonViews/header.php')
 					'class' => 'btn-primary',
 			);
 			
-			$loadC = array(
-					'name'        => 'load_center',
-					'id'          => 'load_center',
-					'value'       => 'View Center',
-					'maxlength'   => '100',
-					'size'        => '50',
-					'style'       => 'width:100px',
-					'class' => 'btn-primary',
-			);
-			
 				echo validation_errors();
 				
 				$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
@@ -59,9 +49,20 @@ $this->load->view('commonViews/header.php')
 				
 				foreach ($query->result() as $row) 
 				{
-					echo form_open('call_center/load_call_center');
-					$this->table->add_row($row->cc_id, $row->city, $row->state, form_submit($loadC,'load_center','View Center'));
-					echo form_close();
+
+					$loadC = array(
+							'name'        => 'load_center',
+							'id'          => $row->cc_id,
+							'value'       => 'View Center',
+							'maxlength'   => '100',
+							'size'        => '50',
+							'style'       => 'width:100px',
+							'class' => 'btn-primary',
+					);
+					
+					//echo form_open('call_center/load_call_center');
+					$this->table->add_row($row->cc_id, $row->city, $row->state, "<p>".form_open('call_center/load_call_center').form_submit($loadC,'load_center','View Center').form_close()."</p>");
+					//echo form_close();
 				}
 				
 				echo $this->table->generate();

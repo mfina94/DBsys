@@ -37,6 +37,21 @@ class Call_Center extends CI_Controller
 	
 	}
 	
+	public function verify_event(){
+		$this->load->model('callcenter');
+		if($this->callcenter->event_submit())
+		{
+			$this->load->view('request_search');
+		}
+		else{
+			$this->load->view('mainpage');
+		}
+	}
+	
+	public function create_event(){
+		$this->load->view('events');
+	}
+	
 	public function load_call_center() {
 		$this->load->view('cc_view');
 	}
