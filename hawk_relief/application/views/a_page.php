@@ -16,7 +16,20 @@ $this->load->view('commonViews/header.php')
 		
 		$query=$this->db->get('call_center');
 		foreach ($query->result() as $row){
-			$this->table->add_row($row->Name, $row->city, $row->state, "temp");
+			
+			$loadC = array(
+					'name'        => 'load_center',
+					'id'          => $row->cc_id,
+					'value'       => 'Delete Center',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:110px',
+					'class' => 'btn-primary',
+			);
+			
+			
+			$this->table->add_row($row->Name, $row->city, $row->state, 
+					"<p>".form_open('admin/deleteCC').form_hidden('id', $row->cc_id).form_submit($loadC,'load_center','Delete Center').form_close()."</p>");
 		}
 		echo $this->table->generate();
 		//at the end of the table needs a 'Add' callcenter button
@@ -26,7 +39,18 @@ $this->load->view('commonViews/header.php')
 		$this->table->set_heading('Disaster ID','Type','City','State','Delete');
 		$query2=$this->db->get('disasters');
 		foreach($query2->result() as $row){
-			$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, "temp");
+			
+			$loadD = array(
+					'name'        => 'load_center',
+					'id'          => $row->cc_id,
+					'value'       => 'Delete Disaster',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:150px',
+					'class' => 'btn-primary',
+			);
+			$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, 
+					"<p>".form_open('admin/deleteD').form_hidden('id', $row->disaster_id).form_submit($loadD,'load_center','Delete Disaster').form_close()."</p>");
 		}
 		echo $this->table->generate();
 		//after the table needs 'ADD' disaster button

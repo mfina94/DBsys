@@ -12,4 +12,23 @@ class Admin extends CI_Controller
 		$this->load->view('a_page');
 	}
 	
+	public function deleteCC(){
+		$this->db->where('cc_id',$this->input->post("id"));
+		$query=$this->db->delete("call_center");
+		if ($query){
+			$this->load->view('a_page');
+		} else{
+			$this->load->view('mainpage');
+		}
+	}
+	
+	public function deleteD(){
+		$this->db->where('disaster_id',$this->input->post("id"));
+		$query=$this->db->delete("disasters");
+		if ($query){
+			$this->load->view('a_page');
+		} else{
+			$this->load->view('mainpage');
+		}
+	}
 }
