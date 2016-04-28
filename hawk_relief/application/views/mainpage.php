@@ -102,7 +102,7 @@ $this->load->view('commonViews/header.php')
 	$event = array(
 			'name'        => 'event_submit',
 			'id'          => 'event_submit',
-			'value'       => 'Create Event',
+			'value'       => 'Create Disaster',
 			'maxlength'   => '100',
 			'size'        => '50',
 			'style'       => 'width:150px',
@@ -163,7 +163,7 @@ $this->load->view('commonViews/header.php')
 	
 	echo form_open('call_center/create_event');
 	echo "<p>";
-	echo form_submit($event,'event_submit','Create Event');
+	echo form_submit($event,'event_submit','Create Disaster');
 	echo "</p>";
 	echo form_close();
 	?>

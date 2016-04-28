@@ -8,6 +8,29 @@ $this->load->view('commonViews/header.php')
 		<h2> Do admin things </h2>
 		</br>
 		<?php 
+		//Call_center table need a 'delete' button
+		$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
+				'table_close' => '</table>');
+		$this->table->set_template($table_config);
+		$this->table->set_heading('Name', 'City', 'State', 'Delete');
+		
+		$query=$this->db->get('call_center');
+		foreach ($query->result() as $row){
+			$this->table->add_row($row->Name, $row->city, $row->state, "temp");
+		}
+		echo $this->table->generate();
+		//at the end of the table needs a 'Add' callcenter button
+		//leave spaace
+		echo "</br>";
+		//Disaster table need a 'delete button'
+		$this->table->set_heading('Disaster ID','Type','City','State','Delete');
+		$query2=$this->db->get('disasters');
+		foreach($query2->result() as $row){
+			$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, "temp");
+		}
+		echo $this->table->generate();
+		//after the table needs 'ADD' disaster button
+		
 		
 		$homepage = array(
 				'name'        => 'homepage',

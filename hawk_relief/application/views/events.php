@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('commonViews/header.php')
 ?>
 <body>
-<header id="header"><h1>Hawk Relief: Events</h1></header>
+<header id="header"><h1>Hawk Relief: Disaster</h1></header>
  
 <div id="container">
 	<div class="row">
