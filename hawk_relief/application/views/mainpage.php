@@ -61,7 +61,7 @@ $this->load->view('commonViews/header.php')
 					);
 					
 					//echo form_open('call_center/load_call_center');
-					$this->table->add_row($row->cc_id, $row->city, $row->state, "<p>".form_open('call_center/load_call_center').form_submit($loadC,'load_center','View Center').form_close()."</p>");
+					$this->table->add_row($row->cc_id, $row->city, $row->state, "<p>".form_open('call_center/load_call_center').form_hidden('id', $row->cc_id).form_submit($loadC,'load_center','View Center').form_close()."</p>");
 					//echo form_close();
 				}
 				
