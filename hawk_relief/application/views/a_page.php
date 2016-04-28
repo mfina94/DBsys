@@ -30,7 +30,9 @@ $this->load->view('commonViews/header.php')
 			
 			$this->table->add_row($row->Name, $row->city, $row->state, 
 					"<p>".form_open('admin/deleteCC').form_hidden('id', $row->cc_id).form_submit($loadC,'load_center','Delete Center').form_close()."</p>");
-		}
+		}?>
+		<h3 style="text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;">Manage Call Centers</h3>
+		<?php 
 		echo $this->table->generate();
 		//at the end of the table needs a 'Add' callcenter button
 		//leave spaace
@@ -51,7 +53,11 @@ $this->load->view('commonViews/header.php')
 			);
 			$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, 
 					"<p>".form_open('admin/deleteD').form_hidden('id', $row->disaster_id).form_submit($loadD,'load_center','Delete Disaster').form_close()."</p>");
-		}
+		}?>
+		<h3 style="text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;">Manage Disasters</h3>
+		<?php 
+		echo "</br>";
+		
 		echo $this->table->generate();
 		//after the table needs 'ADD' disaster button
 		
