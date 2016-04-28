@@ -4,6 +4,8 @@ $this->load->view('commonViews/header.php')
 ?>
 <body>
 <header id="header"><h1>Welcome to Call Center Page!</h1></header>
+<div class="container">
+	<div class="col-lg-10", id="center">
 	<?php 
 	$homepage = array(
 					'name'        => 'homepage',
@@ -21,9 +23,9 @@ $this->load->view('commonViews/header.php')
 				echo form_submit($homepage,'homepage_submit','Back to homepage');
 				echo "</p>";
 				echo form_close();
-			?>
+			
 	?>
-	
-	
+	</div>	
+</div>
 <?php $this->load->view('commonViews/footer.php')?>
 </body>

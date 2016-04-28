@@ -21,8 +21,10 @@ $this->load->view('commonViews/header.php')
 </head>
 
 <body>
+<div id="header"><h1><img src="<?= base_url();?>bootstrap/images/yellow-gradient-swatches.jpg"></h1></div>
+<div id="container">
 	<header id="header"><h1>Hawk Relief: Find a Call Center to volunteer at</h1></header>
-	<div id="container">
+	
 		<div class="col-lg-10", id="center">
 		
 			<?php 
