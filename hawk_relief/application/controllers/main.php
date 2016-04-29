@@ -216,4 +216,8 @@ class Main extends CI_Controller
 			
 		}else echo 'Uh-Oh, we could not submit your data.';
 	}
+	
+	public function load_quantity(){
+		$this->load->view('view_quantity');
+	}
 }

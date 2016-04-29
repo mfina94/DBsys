@@ -102,14 +102,15 @@ class Call_Center extends CI_Controller
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
-			$this->table->set_heading('Name', 'Description', 'Quantity','Date Requested');
+			$this->table->set_heading('Name', 'Description', 'Quantity','Date Requested', 'Donate!');
 	
 			foreach ($query->result() as $row)
 			{
 				$this->table->add_row($row->name,
 						$row->description,
 						$row->quantity,
-						$row->date_request);
+						$row->date_request,
+						'<input id="'.$row->donation_id.'"type="button" value="Donate!" onclick="load_quantity(this)" />');
 			}
 	
 			echo $this->table->generate();
@@ -127,14 +128,15 @@ class Call_Center extends CI_Controller
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
-			$this->table->set_heading('Name', 'Description', 'Quantity','Date Requested');
+			$this->table->set_heading('Name', 'Description', 'Quantity','Date Requested', 'Donate!');
 				
 			foreach ($query->result() as $row)
 			{
 				$this->table->add_row($row->name,
 						$row->description,
 						$row->quantity,
-						$row->date_request);
+						$row->date_request,
+						'<input id="'.$row->donation_id.'"type="button" value="Donate!" onclick="load_quantity(this)" />');
 			}
 				
 			echo $this->table->generate();

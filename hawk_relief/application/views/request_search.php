@@ -26,6 +26,7 @@ $(document).ready(function(){
 			success: function(data){
 				//update results div
 				$("#results").html(data);
+				$("#quantity").empty();
 			}
 		});
 	});
@@ -44,10 +45,24 @@ $(document).ready(function(){
 				success: function(data){
 					//update results div
 					$("#results").html(data);
+					$("#quantity").empty();
 				}
 			});
 		});
 	});
+
+	function load_quantity(button)
+	{
+		$.ajax({
+			url:"<?php echo base_url();?>index.php/main/load_quantity",
+			data: {id: $(button).attr('id')},
+			type: "POST",
+			success: function(data){
+					$("#quantity").html(data);
+				}
+		});
+
+	};
 	</script>
 	</head>
 
@@ -76,7 +91,8 @@ $(document).ready(function(){
 		
 	?>
 				</br>
-				
+				<div id='quantity'></div>
+				</br>
 				<?php 
 					$attributes = array('id'=>'results_form');
 					echo form_open('', $attributes);
