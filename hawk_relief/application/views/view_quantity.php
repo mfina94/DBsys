@@ -1,9 +1,9 @@
 <?php
 	echo "<p>";
-	echo "Current quantity: ";
-	//echo quantity
+	echo "Enter quantity to donate: ";
+	echo '<input id="quanquan"type="text"/>';
 	echo "</p>";
 	
-	echo '<input id="5" type="button" value="Update Treatment">';
+	echo '<input id="5" type="button" value="Submit donation!" onclick="update_quantity(this)">';
 	
 	?>

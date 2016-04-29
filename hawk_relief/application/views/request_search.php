@@ -27,6 +27,7 @@ $(document).ready(function(){
 				//update results div
 				$("#results").html(data);
 				$("#quantity").empty();
+				$("#message").empty();
 			}
 		});
 	});
@@ -46,6 +47,7 @@ $(document).ready(function(){
 					//update results div
 					$("#results").html(data);
 					$("#quantity").empty();
+					$("#message").empty();
 				}
 			});
 		});
@@ -59,10 +61,24 @@ $(document).ready(function(){
 			type: "POST",
 			success: function(data){
 					$("#quantity").html(data);
+					$("#message").empty();
 				}
 		});
 
 	};
+
+	function update_quantity(button){
+		$.ajax({
+			url:"<?php echo base_url();?>index.php/main/update_quantity",
+			data: {quan:$("#quanquan").val()},
+			type: "POST",
+			success: function(data){
+					$("#quantity").empty();
+					$("#message").html(data);
+					$('#results').empty();
+				}
+		});
+	}
 	</script>
 	</head>
 
@@ -92,6 +108,8 @@ $(document).ready(function(){
 	?>
 				</br>
 				<div id='quantity'></div>
+				</br>
+				<div id='message'></div>
 				</br>
 				<?php 
 					$attributes = array('id'=>'results_form');

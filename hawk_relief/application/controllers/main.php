@@ -218,6 +218,47 @@ class Main extends CI_Controller
 	}
 	
 	public function load_quantity(){
+		$this->session->set_userdata('d_id', $this->input->post('id'));
 		$this->load->view('view_quantity');
+	}
+	
+	public function update_quantity(){
+		$don_id = $this->session->userdata('d_id');
+		$quantity = $this->input->post('quan');
+		
+		$this->db->where('donation_id', $don_id);
+		$query = $this->db->get('donations');
+		if ($query->num_rows() == 1){
+			$row = $query->row();
+			$q = $row->quantity;
+			if ($quantity > $q){
+				$data = array('quantity' => 0);
+				$this->db->where('donation_id', $don_id);
+				$this->db->update('donations', $data);
+				
+				echo "Thank you for fulfilling this donation!!";
+			}
+			else if ($quantity < $q) {
+				$new = $q - $quantity;
+				//update quan
+				
+				$data = array('quantity' => $new);
+				$this->db->where('donation_id', $don_id);
+				$this->db->update('donations', $data);
+				
+				echo "Thank you for contributing to the relief!";
+			}
+			else{//they are equal !
+				
+				$data = array('quantity' => 0);
+				$this->db->where('donation_id', $don_id);
+				$this->db->update('donations', $data);
+				
+				echo "Thank you for fulfilling this donation!";
+			}
+		}
+		else{
+			echo "Uh-OH something went wrong :(";
+		}
 	}
 }
