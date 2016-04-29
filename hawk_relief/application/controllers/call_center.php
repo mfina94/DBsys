@@ -113,7 +113,7 @@ class Call_Center extends CI_Controller
 						'<input id="'.$row->donation_id.'"type="button" value="Donate!" onclick="load_quantity(this)" />');
 			}
 	
-			echo $this->table->generate();
+			echo "<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Results from Search</h3></br>".$this->table->generate();
 		}
 		else echo "<p>No match found for that category</p>";
 	}
@@ -139,7 +139,7 @@ class Call_Center extends CI_Controller
 						'<input id="'.$row->donation_id.'"type="button" value="Donate!" onclick="load_quantity(this)" />');
 			}
 				
-			echo $this->table->generate();
+			echo "<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Results from Search</h3></br>".$this->table->generate();
 		}
 		else echo "<p>No match found for that name</p>";
 	}

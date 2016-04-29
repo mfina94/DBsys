@@ -231,30 +231,35 @@ class Main extends CI_Controller
 		if ($query->num_rows() == 1){
 			$row = $query->row();
 			$q = $row->quantity;
-			if ($quantity > $q){
-				$data = array('quantity' => 0);
-				$this->db->where('donation_id', $don_id);
-				$this->db->update('donations', $data);
-				
-				echo "Thank you for fulfilling this donation!!";
+			if($q != 0){
+				if ($quantity > $q){
+					$data = array('quantity' => 0);
+					$this->db->where('donation_id', $don_id);
+					$this->db->update('donations', $data);
+					
+					echo "Thank you for fulfilling this donation!!";
+				}
+				else if ($quantity < $q) {
+					$new = $q - $quantity;
+					//update quan
+					
+					$data = array('quantity' => $new);
+					$this->db->where('donation_id', $don_id);
+					$this->db->update('donations', $data);
+					
+					echo "Thank you for contributing to the relief!";
+				}
+				else{//they are equal !
+					
+					$data = array('quantity' => 0);
+					$this->db->where('donation_id', $don_id);
+					$this->db->update('donations', $data);
+					
+					echo "Thank you for fulfilling this donation!";
+				}
 			}
-			else if ($quantity < $q) {
-				$new = $q - $quantity;
-				//update quan
-				
-				$data = array('quantity' => $new);
-				$this->db->where('donation_id', $don_id);
-				$this->db->update('donations', $data);
-				
-				echo "Thank you for contributing to the relief!";
-			}
-			else{//they are equal !
-				
-				$data = array('quantity' => 0);
-				$this->db->where('donation_id', $don_id);
-				$this->db->update('donations', $data);
-				
-				echo "Thank you for fulfilling this donation!";
+			else {
+				echo "This item has no requests to fill";
 			}
 		}
 		else{
