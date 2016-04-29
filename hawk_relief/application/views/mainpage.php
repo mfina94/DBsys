@@ -163,11 +163,6 @@ $this->load->view('commonViews/header.php')
 	echo "</p>";
 	echo form_close();
 	
-	echo form_open('call_center/create_event');
-	echo "<p>";
-	echo form_submit($event,'event_submit','Create Disaster');
-	echo "</p>";
-	echo form_close();
 	?>
 		</div>
 	</div>

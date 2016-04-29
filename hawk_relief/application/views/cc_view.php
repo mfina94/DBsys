@@ -11,7 +11,7 @@ $this->load->view('commonViews/header.php')
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
 	
-			$this->table->set_heading('Disaster ID','Type','City','State','Delete');
+			$this->table->set_heading('Disaster ID','Type','City','State','Zipcode','Occurence of Disaster','Delete');
 			$query2=$this->db->get('disasters');
 			foreach($query2->result() as $row){
 					
@@ -24,7 +24,7 @@ $this->load->view('commonViews/header.php')
 						'style'       => 'width:150px',
 						'class' => 'btn-primary',
 				);
-				$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state,
+				$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, $row->zip_code, $row->start_date,
 						"<p>".form_open('admin/deleteD').form_hidden('id', $row->disaster_id).form_submit($loadD,'load_center','Delete Disaster').form_close()."</p>");
 			}
 			echo $this->table->generate();
@@ -39,6 +39,14 @@ $this->load->view('commonViews/header.php')
 							'class' => 'btn-primary',
 					);
 				echo"</br>";
+				
+				echo form_open('call_center/create_event');
+				echo form_hidden('cc_id', $id);
+				echo "<p>";
+				echo form_submit($event,'event_submit','Create Disaster');
+				echo "</p>";
+				echo form_close();
+				
 				echo form_open('main/index');
 				echo "<p>";
 				echo form_submit($homepage,'homepage_submit','Back to homepage');
