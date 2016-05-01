@@ -12,7 +12,7 @@ $this->load->view('commonViews/header.php')
 		$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 				'table_close' => '</table>');
 		$this->table->set_template($table_config);
-		$this->table->set_heading('Name', 'City', 'State', 'Delete');
+		$this->table->set_heading('Name', 'City', 'State', 'View','Delete');
 		
 		$query=$this->db->get('call_center');
 		foreach ($query->result() as $row){
@@ -27,8 +27,19 @@ $this->load->view('commonViews/header.php')
 					'class' => 'btn-primary',
 			);
 			
+			$loadCC = array(
+					'name'        => 'load_center',
+					'id'          => $row->cc_id,
+					'value'       => 'View Center',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:110px',
+					'class' => 'btn-primary',
+			);
+			
 			
 			$this->table->add_row($row->Name, $row->city, $row->state, 
+					"<p>".form_open('call_center/load_call_center').form_hidden('id', $row->cc_id).form_submit($loadCC,'load_center','View Center').form_close()."</p>",
 					"<p>".form_open('admin/deleteCC').form_hidden('id', $row->cc_id).form_submit($loadC,'load_center','Delete Center').form_close()."</p>");
 		}?>
 		<h3 style="text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;">Manage Call Centers</h3>
