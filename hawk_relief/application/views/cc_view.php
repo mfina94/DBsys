@@ -6,6 +6,23 @@ $this->load->view('commonViews/header.php')
 <header id="header"><h1>Welcome to Call Center Page!</h1></header>
 <div class="container">
 	<div class="col-lg-10", id="center">
+	
+	
+	
+	<!-- CC info -->
+	<?php 
+		$this->db->where('cc_id', $id);
+		$query = $this->db->get('call_center');
+		$row = $query->row();
+	?>
+	<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'><?php echo $row->Name;?></h3></br>
+	</br><p>Address: <?php echo $row->street_address;?></p>
+	</br><p>City: <?php echo $row->city;?></p>
+	</br><p>State: <?php echo $row->state;?></p>
+	
+	</br>
+	<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Disasters for this center</h3></br>
+	<!--  Disasters table -->
 	<?php 
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
