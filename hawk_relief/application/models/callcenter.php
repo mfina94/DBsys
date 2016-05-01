@@ -86,7 +86,7 @@
  	
  	public function event_submit(){
  		$temp = array('type' => $this->input->post('type'),
- 					//'cc_id'=> ''
+ 					'cc_id'=> $this->input->post('cc_id'),
  					'street_address' => $this->input->post('street_address'),
  					'city' => $this->input->post('city'),
  					'state' => $this->input->post('state'),

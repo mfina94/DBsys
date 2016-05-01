@@ -41,15 +41,18 @@ class Call_Center extends CI_Controller
 		$this->load->model('callcenter');
 		if($this->callcenter->event_submit())
 		{
-			$this->load->view('request_search');
+			$this->load->view('mainpage');
 		}
 		else{
+			$this->session->set_flashdata('message', "Unable to submit event");
 			$this->load->view('mainpage');
 		}
 	}
 	
 	public function create_event(){
-		$this->load->view('events');
+		$cc_id = $this->input->post('cc_id');
+		$data['cc_id'] = $cc_id;
+		$this->load->view('events', $data);
 	}
 	
 

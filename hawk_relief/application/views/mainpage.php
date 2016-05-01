@@ -39,6 +39,7 @@ $this->load->view('commonViews/header.php')
 					'class' => 'btn-primary',
 			);
 			
+				echo $this->session->flashdata('message');
 				echo validation_errors();
 				
 				$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
@@ -95,16 +96,6 @@ $this->load->view('commonViews/header.php')
 			'name'        => 'logout',
 			'id'          => 'logout',
 			'value'       => 'Logout',
-			'maxlength'   => '100',
-			'size'        => '50',
-			'style'       => 'width:150px',
-			'class' => 'btn-primary',
-	);
-	
-	$event = array(
-			'name'        => 'event_submit',
-			'id'          => 'event_submit',
-			'value'       => 'Create Disaster',
 			'maxlength'   => '100',
 			'size'        => '50',
 			'style'       => 'width:150px',

@@ -40,6 +40,16 @@ $this->load->view('commonViews/header.php')
 					);
 				echo"</br>";
 				
+				$event = array(
+						'name'        => 'event_submit',
+						'id'          => 'event_submit',
+						'value'       => 'Create Disaster',
+						'maxlength'   => '100',
+						'size'        => '50',
+						'style'       => 'width:150px',
+						'class' => 'btn-primary',
+				);
+				
 				echo form_open('call_center/create_event');
 				echo form_hidden('cc_id', $id);
 				echo "<p>";

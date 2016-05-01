@@ -29,6 +29,8 @@ $this->load->view('commonViews/header.php')
 	$attributes = array('class' => 'form-group', 'role' => 'form');
 	echo form_open('call_center/verify_event', $attributes);
 	
+	echo form_hidden('cc_id', $cc_id);
+	
 	echo validation_errors();
 	
 	echo "<p> Type: ";
