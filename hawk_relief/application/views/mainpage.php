@@ -73,15 +73,7 @@ $this->load->view('commonViews/header.php')
 
 	
 	//Buttons to get to profile and donation page
-	$request = array(
-			'name'        => 'request_start',
-			'id'          => 'request_start',
-			'value'       => 'Request a Donation!',
-			'maxlength'   => '100',
-			'size'        => '50',
-			'style'       => 'width:150px',
-			'class' => 'btn-primary',
-	);
+
 	
 	$search = array(
 			'name'        => 'request_search',
@@ -137,11 +129,7 @@ $this->load->view('commonViews/header.php')
 	echo "</p>";
 	echo form_close();
 	
-	echo form_open('call_center/request_start');
-	echo "<p>";
-	echo form_submit($request, 'request_start', 'Request a Donation!');
-	echo "</p>";
-	echo form_close();
+	
 	
 	echo form_open('user/profile_page');
 	echo "<p>";

@@ -28,7 +28,7 @@ $this->load->view('commonViews/header');?>
         	echo "<p> Name of Request: ";
         	echo form_input('name',$this->input->post('name'));
         	echo "<span> *</span></p>";
-        	
+        	echo form_hidden('disaster_id', $id);
         	//store dropdown box options as an array
         	//Must change based on db items
         	

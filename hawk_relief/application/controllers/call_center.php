@@ -69,7 +69,9 @@ class Call_Center extends CI_Controller
 	}
 	
 	public function request_start() {
-		$this->load->view('request_submit_view');
+		$id = $this->input->post('disaster_id');
+		$data['id'] = $id;
+		$this->load->view('request_submit_view', $data);
 	}
 	
 	public function request_search() {

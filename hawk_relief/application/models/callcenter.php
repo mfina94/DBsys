@@ -15,6 +15,7 @@
  				'description' => $this->input->post('description'),
  				'date_request' => date("Y-m-d H:i:s"),
  				'item_category_id' => $this->input->post('category'),
+ 				'disaster_id' => $this->input->post('disaster_id'),
  				'request_id' => $row->id,
  				'quantity' => $this->input->post('quantity')
  		);
