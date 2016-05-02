@@ -88,13 +88,22 @@ class Call_Center extends CI_Controller
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
-		$this->table->set_heading('id', 'City', 'State');
+		$this->table->set_heading('id', 'City', 'State', 'View');
 		
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->cc_id,$row->city,$row->state);
+				$loadDi = array(
+						'name'        => 'load_center',
+						'id'          => $row->cc_id,
+						'value'       => 'View Disaster',
+						'maxlength'   => '100',
+						'size'        => '50',
+						'style'       => 'width:150px',
+						'class' => 'btn-primary',
+				);
+				$this->table->add_row($row->cc_id,$row->city,$row->state, "<p>".form_open('call_center/load_disaster').form_hidden('id', $row->cc_id).form_submit($loadDi,'load_center','View Disaster').form_close()."</p>");
 			}
-			echo $this->table->generate();
+			echo "<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Results from Search</h3></br>".$this->table->generate();
 			}
 		else echo "<p>No match found for that type of disaster</p>";
 		
@@ -164,19 +173,29 @@ class Call_Center extends CI_Controller
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
-			$this->table->set_heading('id', 'City', 'State');
+			$this->table->set_heading('id', 'City', 'State', 'View');
 		
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->cc_id,$row->city,$row->state);
+				$loadCC = array(
+						'name'        => 'load_center',
+						'id'          => $row->cc_id,
+						'value'       => 'View Center',
+						'maxlength'   => '100',
+						'size'        => '50',
+						'style'       => 'width:110px',
+						'class' => 'btn-primary',
+				);
+				$this->table->add_row($row->cc_id,$row->city,$row->state, "<p>".form_open('call_center/load_call_center').form_hidden('id', $row->cc_id).form_submit($loadCC,'load_center','View Center').form_close()."</p>");
+			
 			}
-			echo $this->table->generate();
+			echo "<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Results from Search</h3></br>".$this->table->generate();
 			}
 		else echo "<p>No match found for that city</p>";
 	}
 	
 	public function cc_state_search() {
-		$city = $this->input->post('state');
+		$state = $this->input->post('state');
 	
 		$this->load->model('callcenter');
 		$query = $this->callcenter->centers_by_state($state);
@@ -185,13 +204,22 @@ class Call_Center extends CI_Controller
 			$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
 					'table_close' => '</table>');
 			$this->table->set_template($table_config);
-			$this->table->set_heading('id', 'City', 'State');
+			$this->table->set_heading('id', 'City', 'State', 'View');
 	
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->cc_id,$row->city,$row->state);
+				$loadCC = array(
+						'name'        => 'load_center',
+						'id'          => $row->cc_id,
+						'value'       => 'View Center',
+						'maxlength'   => '100',
+						'size'        => '50',
+						'style'       => 'width:110px',
+						'class' => 'btn-primary',
+				);
+				$this->table->add_row($row->cc_id,$row->city,$row->state, "<p>".form_open('call_center/load_call_center').form_hidden('id', $row->cc_id).form_submit($loadCC,'load_center','View Center').form_close()."</p>");
 			}
-			echo $this->table->generate();
+			echo "<h3  style='text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;'>Results from Search</h3></br>".$this->table->generate();
 		}
 		else echo "<p>No match found for that state</p>";
 	}

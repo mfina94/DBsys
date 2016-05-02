@@ -85,6 +85,16 @@ $this->load->view('commonViews/header.php')
 			'class' => 'btn-primary',
 	);
 	
+	$search2 = array(
+			'name'        => 'request_search',
+			'id'          => 'request_search',
+			'value'       => 'Search Centers and Disasters',
+			'maxlength'   => '300',
+			'size'        => '50',
+			'style'       => 'width:300px',
+			'class' => 'btn-primary',
+	);
+	
 	$logout = array(
 			'name'        => 'logout',
 			'id'          => 'logout',
@@ -129,7 +139,11 @@ $this->load->view('commonViews/header.php')
 	echo "</p>";
 	echo form_close();
 	
-	
+	echo form_open('main/other_search');
+	echo "<p>";
+	echo form_submit($search2, 'request_search', 'Search Centers and Disasters');
+	echo "</p>";
+	echo form_close();
 	
 	echo form_open('user/profile_page');
 	echo "<p>";

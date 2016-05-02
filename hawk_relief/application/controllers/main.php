@@ -8,6 +8,10 @@ class Main extends CI_Controller
 		parent::__construct();
 	}
 	
+	public function other_search(){
+		$this->load->view('other_search');
+	}
+	
 	public function index() {
 		$this->load->model('user');
 		

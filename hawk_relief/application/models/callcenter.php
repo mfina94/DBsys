@@ -32,14 +32,14 @@
  	}
  	
  	public function centers_by_city($city){
- 		$this->db->from('callcenter');
+ 		$this->db->from('call_center');
  		$this->db->like('city', $city);
  		$query = $this->db->get();
  		return $query;
  	}
  	
  	public function centers_by_state($state){
- 		$this->db->from('callcenter');
+ 		$this->db->from('call_center');
  		$this->db->like('state', $state);
  		$query = $this->db->get();
  		return $query;
@@ -49,13 +49,7 @@
  		$this->db->from('disasters');
  		$this->db->where('type', $type);
  		$query = $this->db->get();
- 		foreach ($query->result() as $row)
- 		{
- 			$this->db->from('callcenter');
- 			$this->db->where('cc_id', $row->cc_id);
- 			$query2 = $this->db->get();
- 		}
- 		return $query2;
+ 		return $query;
  	}
  	
  	public function items_by_category($category){
