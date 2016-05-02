@@ -86,7 +86,7 @@ $this->load->view('commonViews/header.php')
 	$search = array(
 			'name'        => 'request_search',
 			'id'          => 'request_search',
-			'value'       => 'Search Donations',
+			'value'       => 'Search All Donations',
 			'maxlength'   => '100',
 			'size'        => '50',
 			'style'       => 'width:150px',

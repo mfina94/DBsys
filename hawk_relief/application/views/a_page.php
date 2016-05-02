@@ -49,10 +49,18 @@ $this->load->view('commonViews/header.php')
 		//leave spaace
 		echo "</br>";
 		//Disaster table need a 'delete button'
-		$this->table->set_heading('Disaster ID','Type','City','State','Delete');
+		$this->table->set_heading('Disaster ID','Type','City','State','View','Delete');
 		$query2=$this->db->get('disasters');
 		foreach($query2->result() as $row){
-			
+			$loadDi = array(
+					'name'        => 'load_center',
+					'id'          => $row->cc_id,
+					'value'       => 'View Disaster',
+					'maxlength'   => '100',
+					'size'        => '50',
+					'style'       => 'width:150px',
+					'class' => 'btn-primary',
+			);
 			$loadD = array(
 					'name'        => 'load_center',
 					'id'          => $row->cc_id,
@@ -63,6 +71,7 @@ $this->load->view('commonViews/header.php')
 					'class' => 'btn-primary',
 			);
 			$this->table->add_row($row->disaster_id, $row->type, $row->city, $row->state, 
+					"<p>".form_open('call_center/load_disaster').form_hidden('id', $row->cc_id).form_submit($loadDi,'load_center','View Disaster').form_close()."</p>",
 					"<p>".form_open('admin/deleteD').form_hidden('id', $row->disaster_id).form_submit($loadD,'load_center','Delete Disaster').form_close()."</p>");
 		}?>
 		<h3 style="text-align: center; background: yellow; border: solid; border-width: 2px; border-color: black; border-radius: 7px;">Manage Disasters</h3>
