@@ -15,6 +15,10 @@ $this->load->view('commonViews/header');?>
         	
         	echo validation_errors();
         	
+        	echo "<p> Name:";
+        	echo form_input('Name',$this->input->post('Name'));
+        	echo "</p>";
+        	
         	echo "<p> Street Address:";
         	echo form_input('street_address',$this->input->post('street_address'));
         	echo "</p>";

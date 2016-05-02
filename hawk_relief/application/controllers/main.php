@@ -186,6 +186,10 @@ class Main extends CI_Controller
 		else return false;
 	}
 	
+	public function new_call_center() {
+		$this->load->view('registration_cc');
+	}
+	
 	public function complete_registration() {
 		$this->load->model('user');
 	
@@ -201,20 +205,14 @@ class Main extends CI_Controller
 		if($this->user->complete_new_user()){
 			//delete corresponding entry from temp_users table
 			$link = $this->session->userdata('link');
-			if($this->user->isGeneralUser($link)){
 				//user created, send to registration completion page to enter info
 				//load registration view	
 				$this->db->where('link',$this->session->userdata('link'));
 				$this->db->delete('temp_users');
 				$this->load->view('mainpage');
-			}
-			else{
-				$this->db->where('link',$this->session->userdata('link'));
-				$this->db->delete('temp_users');
-				$this->load->view('registration_cc');
-			}
 			
-		}else echo 'Uh-Oh, we could not submit your data.';
+		}
+		else echo 'Uh-Oh, we could not submit your data.';
 	}
 	
 	public function load_quantity(){
@@ -264,6 +262,25 @@ class Main extends CI_Controller
 		}
 		else{
 			echo "Uh-OH something went wrong :(";
+		}
+	}
+	
+	public function add_operator()
+	{
+		$cc_id = $this->input->post('center');
+		$op_id = $this->input->post('operators');
+		
+		$temp = array(
+				'cc_id'=> $cc_id,
+				'user_id' => $op_id
+		);
+		$q = $this->db->insert('call_center_operators', $temp);
+		
+		if($q){
+			$this->load->view('a_page');
+		}
+		else{
+			$this->load->view('mainpage');
 		}
 	}
 }

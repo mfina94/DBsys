@@ -5,8 +5,6 @@ $this->load->view('commonViews/header.php')
 <body>
 <div id="header"><h1> Admin Page </h1></div>
 	<div id="mainpage">
-		<h2> Do admin things </h2>
-		</br>
 		<?php 
 		//Call_center table need a 'delete' button
 		$table_config = array ( 'table_open'  => '<table class="table table-hover table-bordered">',
@@ -48,6 +46,55 @@ $this->load->view('commonViews/header.php')
 		//at the end of the table needs a 'Add' callcenter button
 		//leave spaace
 		echo "</br>";
+		
+		$newCC = array(
+				'name'        => 'load_center',
+				'id'          => $row->cc_id,
+				'value'       => 'Add Center',
+				'maxlength'   => '100',
+				'size'        => '50',
+				'style'       => 'width:110px',
+				'class' => 'btn-primary',
+		);
+		
+		echo "<p>".form_open('main/new_call_center');
+		echo form_submit($newCC,'','');
+		echo form_close()."</p>";
+		echo "</br>";
+
+		echo "<h3>Assign an operator to a center</h3>";
+		$qu = $this->db->get('call_center');
+		
+		$centers = array(''=>'Select Center');
+		echo "<p>".form_open('main/add_operator');
+		foreach($qu->result() as $row){
+			$centers[$row->cc_id] = $row->Name;
+			
+		}
+		echo form_dropdown('center', $centers, '', 'id="cent"');
+		
+		$this->db->where('role', "CCOP");
+		$q1 = $this->db->get('user');//all operators in q1
+		
+		$ops = array('' => 'Select Operator');
+		foreach($q1->result() as $row1)
+		{
+			$ops[$row1->id] = $row1->username;		
+		}
+		$add = array(
+				'name'        => 'load_center',
+				'id'          => $row->cc_id,
+				'value'       => 'Add operator',
+				'maxlength'   => '100',
+				'size'        => '50',
+				'style'       => 'width:150px',
+				'class' => 'btn-primary',
+		);
+		echo form_dropdown('operators', $ops, '', 'id="ops"');
+		echo form_submit($add,'','');
+		echo form_close();
+		echo "</br>";
+		
 		//Disaster table need a 'delete button'
 		$this->table->set_heading('Disaster ID','Type','City','State','View','Delete');
 		$query2=$this->db->get('disasters');

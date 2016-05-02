@@ -43,8 +43,7 @@
 				
 				//store dropdown box options as an array
 				$role_options = array('user'=>'User',
-						'CCOP'=>'Control Center Operator',
-						'admin'=>'Admin');
+						'CCOP'=>'Control Center Operator');
 				echo "<p>Role: ";
 				//create dropdown box, default option patient
 				echo form_dropdown('role',$role_options,'user');
